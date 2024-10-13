@@ -1,0 +1,60 @@
+import java.util.Scanner;
+
+public class RestaurantOrderSystem {
+    public static void main(String[] args) {
+        // Create a Scanner object for input (simulated)
+        Scanner scanner = new Scanner(System.in);
+
+        // Display the menu
+        System.out.println("MENU");
+        System.out.println("1. Burger    - PHP 100");
+        System.out.println("2. Fries     - PHP  50");
+        System.out.println("3. Soda      - PHP  30");
+        System.out.println("4. Ice Cream - PHP  45");
+        System.out.println("5. Exit");
+
+        // Simulating user input for menu selection and quantity
+        int menuChoice = 2;  // Simulating choice of Fries
+        int quantity = 3;    // Simulating quantity of 3
+
+        // Displaying the simulated input
+        System.out.println("Enter the menu number of your choice: " + menuChoice);
+        System.out.println("Enter the quantity: " + quantity);
+
+        double price = 0;
+        String itemName = "";
+
+        // Switch statement to process the user's choice
+        switch (menuChoice) {
+            case 1:
+                itemName = "Burger";
+                price = 100;
+                break;
+            case 2:
+                itemName = "Fries";
+                price = 50;
+                break;
+            case 3:
+                itemName = "Soda";
+                price = 30;
+                break;
+            case 4:
+                itemName = "Ice Cream";
+                price = 45;
+                break;
+            case 5:
+                System.out.println("Exiting the system.");
+                return;
+            default:
+                System.out.println("Invalid menu selection.");
+                return;
+        }
+
+        // Calculate the total amount
+        double totalAmount = price * quantity;
+
+        // Output the results
+        System.out.println("You ordered " + itemName + ".");
+        System.out.println("Total amount: PHP " + totalAmount);
+    }
+}
