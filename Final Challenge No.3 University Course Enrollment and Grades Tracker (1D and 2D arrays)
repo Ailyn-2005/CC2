@@ -1,0 +1,34 @@
+// Cunanan, Ailyn F. 
+// CC2 CITCS 1B-B
+
+import java.util.Scanner;
+
+public class UniversityCourseEnrollmentandGradesTracker {
+	public static void main(String[] args) {
+        // Student names
+        Scanner scanner = new Scanner (System.in);
+
+        String[] students = {"Alice", "Bob", "Charlie", "Diana", "Eve"};
+        // Grades for each student in 3 subjects
+        int[][] grades = {
+            {85, 90, 78},  // Alice
+            {88, 76, 92},  // Bob
+            {70, 85, 80},  // Charlie
+            {95, 89, 94},  // Diana
+            {60, 65, 70}   // Eve
+        };
+
+        System.out.println("Student Grades and Averages:");
+
+        for (int i = 0; i < students.length; i++) {
+            int totalGrades = 0;
+            System.out.print(students[i] + "'s Grades: ");
+            for (int j = 0; j < grades[i].length; j++) {
+                totalGrades += grades[i][j];
+                System.out.print(grades[i][j] + " ");
+            }
+            double averageGrade = totalGrades / 3.0;
+            System.out.println("| Average: " + averageGrade);
+        }
+    }
+}
