@@ -1,3 +1,10 @@
+/*
+Cunanan,Ailyn F.
+, 2024
+Restaurant Order System
+*/
+
+
 import java.util.Scanner;
 
 public class RestaurantOrderSystem {
