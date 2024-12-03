@@ -1,0 +1,95 @@
+class Node {
+    String url; // URL of the web page
+    Node prev; // Reference to the previous node
+    Node next; // Reference to the next node
+
+    public Node(String url) {
+        this.url = url;
+        this.prev = null;
+        this.next = null;
+    }
+}
+
+class BrowserHistory {
+    private Node current; // points to the current web page
+    private Node head; // points to the head of the list
+
+    // Constructor
+    public BrowserHistory(String homepage) {
+        head = new Node(homepage);
+        current = head;
+    }
+    
+    // Visit a new page
+    public void visit(String url) {
+        Node newNode = new Node(url);
+        newNode.prev = current;
+        current.next = newNode;
+        current = newNode;
+    }
+    
+    // Go back to the previous page
+    public String back() {
+        if (current.prev != null) {
+            current = current.prev;
+        }
+        return current.url;
+    }
+    
+    // Go forward to the next page
+    public String forward() {
+        if (current.next != null) {
+            current = current.next;
+        }
+        return current.url;
+    }
+    
+    // Clear forward history
+    private void clearForwardHistory() {
+        if (current.next != null) {
+            current.next = null; // Disconnect the forward nodes
+        }
+    }
+    
+    // Combined visit method that also clears forward history
+    public void visitAndClear(String url) {
+        clearForwardHistory();
+        visit(url);
+    }
+
+    // Get current page
+    public String getCurrentPage() {
+        return current.url;
+    }
+}
+
+// Testing the BrowserHistory class
+public class Main {
+    public static void main(String[] args) {
+        BrowserHistory history = new BrowserHistory("homepage.com");
+
+        // Visiting pages
+        System.out.println("Current page: " + history.getCurrentPage());
+        history.visit("example.com");
+        System.out.println("Current page: " + history.getCurrentPage());
+        history.visit("anotherexample.com");
+        System.out.println("Current page: " + history.getCurrentPage());
+
+        // Going back
+        System.out.println("Back to: " + history.back());
+        System.out.println("Back to: " + history.back());
+
+        // Forward
+        System.out.println("Forward to: " + history.forward());
+
+        // Visit and clear forward history
+        history.visitAndClear("newpage.com");
+        System.out.println("Current page: " + history.getCurrentPage());
+        
+        // Test back again
+        System.out.println("Back to: " + history.back());  // Should go to "example.com"
+        
+        // Trying to go forward after clearing history
+        System.out.println("Forward to: " + history.forward()); // Should still be on "example.com"
+    }
+}
