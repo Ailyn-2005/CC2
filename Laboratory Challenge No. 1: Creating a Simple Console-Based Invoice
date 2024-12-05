@@ -1,0 +1,31 @@
+// Cunanan, Ailyn F.
+// CC2-1B B
+
+public class Invoice {
+    public static void main(String[] args) {
+        // Store Information
+        System.out.println("Store Name: \"Ailyn's Tech Shop\"");
+        System.out.println("Location: SM Baguio City, Upper Session Road, Baguio City, 2600 Benguet\n");
+        
+        // Itemized List
+        System.out.println("Itemized List:");
+        System.out.println("---------------------------------------");
+        System.out.println("Item\t\tQuantity\tPrice");
+        System.out.println("---------------------------------------");
+        System.out.println("Laptop\t\t1\t\t₱50,000.00");
+        System.out.println("Mouse\t\t2\t\t₱2,000.00");
+        System.out.println("Keyboard\t1\t\t₱5,000.00");
+        System.out.println("Monitor\t\t1\t\t₱10,000.00\n");
+        System.out.println("System Unit\t\t1\t\t₱15,000.00\n");
+        
+        System.out.println("---------------------------------------");
+        // Total Amount
+        double totalAmount = 50000.00 + 2000.00 + 5000.00 + 10000.00 + 15000.00;
+        System.out.printf("Total Amount Due:\t\t₱%.2f\n", totalAmount);
+       
+        System.out.println("---------------------------------------"); 
+        // Thank you message
+        System.out.println("\nThank you for shopping at Ailyn's Tech Shop!");
+        System.out.println("Have a nice day!");
+    }
+}
