@@ -1,0 +1,43 @@
+// Cunanan, Ailyn F.
+// CC2-1B B
+
+import java.util.Scanner;
+
+public class FlightBookingSystem {
+    private int availableSeats;
+
+    public FlightBookingSystem(int availableSeats) {
+        this.availableSeats = availableSeats;
+    }
+
+    public void bookSeat() throws NoSeatsAvailableException {
+        if (availableSeats <= 0) {
+            throw new NoSeatsAvailableException("No seats available! Please check another flight.");
+        }
+        availableSeats--;
+        System.out.println("Booking successful! Remaining seats: " + availableSeats);
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        FlightBookingSystem flight = new FlightBookingSystem(2); // Initial seat availability: 2
+
+        System.out.println("Welcome to the flight booking system.");
+        char choice;
+        do {
+            System.out.print("Do you want to book a seat? (Y/N): ");
+            choice = scanner.next().charAt(0);
+
+            if (choice == 'Y' || choice == 'y') {
+                try {
+                    flight.bookSeat();
+                } catch (NoSeatsAvailableException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+        } while ((choice == 'Y' || choice == 'y') && flight.availableSeats > 0);
+
+        System.out.println("Thank you for using our flight booking system.");
+        scanner.close();
+    }
+}
