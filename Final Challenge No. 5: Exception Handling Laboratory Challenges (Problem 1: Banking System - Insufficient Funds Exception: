@@ -1,0 +1,39 @@
+// Cunanan, Ailyn F.
+// CC2-1B B
+
+import java.util.Scanner;
+
+public class BankingSystem {
+    private double balance;
+
+    public BankingSystem(double initialBalance) {
+        this.balance = initialBalance;
+    }
+
+    public void withdraw(double amount) throws InsufficientFundsException {
+        if (amount > balance) {
+            throw new InsufficientFundsException("Insufficient funds! Attempted to withdraw PHP " + amount +
+                                                 " but only PHP " + balance + " is available.");
+        }
+        balance -= amount;
+        System.out.println("Withdrawal successful! New balance: PHP " + balance);
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        BankingSystem account = new BankingSystem(5000); // Initial balance: PHP 5000
+
+        System.out.print("Enter withdrawal amount: ");
+        double amount = scanner.nextDouble();
+
+        try {
+            account.withdraw(amount);
+        } catch (InsufficientFundsException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            System.out.println("Transaction complete. Thank you for using our banking services.");
+        }
+
+        scanner.close();
+    }
+}
